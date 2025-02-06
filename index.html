@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Light Party - แจ้งปัญหา</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://img2.pic.in.th/pic/00-5c47cf21a9065496.jpg') no-repeat center center/cover;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+#issueForm {
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#issueForm .form-control {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#issueForm .form-control:focus {
+    border-color: #FF8D14;
+    box-shadow: 0 0 0 0.2rem rgba(255, 141, 20, 0.25);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#issueForm .form-control::placeholder {
+    color: #aaa;
+}
+
+form{
+    font-family: "IBM Plex Sans Thai", serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+#background-image-container {
+    position: absolute; /* กำหนดให้ div อยู่เหนือ form */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://img2.pic.in.th/pic/Screenshot_2025-02-06_113604-removebg-preview.png');
+    background-size: 50%;
+    background-position: top center;
+    background-repeat: no-repeat;
+    opacity: 0.3; /* ปรับความโปร่งใสของรูปภาพ */
+    z-index: -1; /* กำหนดให้รูปภาพอยู่ด้านหลัง form */
+}
+    </style>
+    
+    <script>
+        let currentLang = 'th'; // ตั้งค่าเริ่มต้นเป็นภาษาไทย
+
+        // ฟังก์ชันเพื่อสลับภาษา
+        function switchLanguage() {
+            if (currentLang === 'th') {
+                // เปลี่ยนเป็นภาษาอังกฤษ
+                currentLang = 'en';
+                document.getElementById("title").innerText = "New Light Party - Report an Issue";
+                document.getElementById("nameLabel").innerText = "Full Name";
+                document.getElementById("emailLabel").innerText = "Email";
+                document.getElementById("issueDescriptionLabel").innerText = "Issue Description";
+                document.getElementById("issueImageLabel").innerText = "Attach Image (if any)";
+                document.getElementById("identityLabel").innerText = "Do you want to identify yourself?";
+                document.getElementById("identifiedLabel").innerText = "Identify";
+                document.getElementById("anonymousLabel").innerText = "Anonymous";
+                document.getElementById("submitButton").innerText = "Submit Issue";
+                document.getElementById("submittedInfoHeader").innerText = "Submitted Information:";
+
+                // เปลี่ยน placeholder ของ input และ textarea
+                document.getElementById("name").placeholder = "Enter your name";
+                document.getElementById("email").placeholder = "Enter your email";
+                document.getElementById("issueDescription").placeholder = "Enter the issue description";
+            } else {
+                // เปลี่ยนเป็นภาษาไทย
+                currentLang = 'th';
+                document.getElementById("title").innerText = "New Light Party - แจ้งปัญหา";
+                document.getElementById("nameLabel").innerText = "ชื่อ-สกุล";
+                document.getElementById("emailLabel").innerText = "อีเมล";
+                document.getElementById("issueDescriptionLabel").innerText = "รายละเอียดปัญหา";
+                document.getElementById("issueImageLabel").innerText = "แนบรูปภาพ (ถ้ามี)";
+                document.getElementById("identityLabel").innerText = "คุณต้องการระบุตัวตนหรือไม่?";
+                document.getElementById("identifiedLabel").innerText = "ระบุตัวตน";
+                document.getElementById("anonymousLabel").innerText = "ไม่ระบุตัวตน";
+                document.getElementById("submitButton").innerText = "ส่งปัญหา";
+                document.getElementById("submittedInfoHeader").innerText = "ข้อมูลที่ส่ง:";
+
+                // เปลี่ยน placeholder ของ input และ textarea
+                document.getElementById("name").placeholder = "กรอกชื่อของคุณ";
+                document.getElementById("email").placeholder = "กรอกอีเมลของคุณ";
+                document.getElementById("issueDescription").placeholder = "กรอกรายละเอียดปัญหาที่คุณพบ";
+            }
+        }
+
+        // ฟังก์ชันส่งข้อมูล
+        function submitForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var issueDescription = document.getElementById("issueDescription").value;
+            var identityOption = document.querySelector('input[name="identityOption"]:checked').value;
+
+            document.getElementById("submittedName").innerText = "Name: " + name;
+            document.getElementById("submittedEmail").innerText = "Email: " + email;
+            document.getElementById("submittedIssue").innerText = "Issue Description: " + issueDescription;
+            document.getElementById("submittedInfo").style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <form id="issueForm">
+            <div id="background-image-container"></div>
+            <!-- ปุ่มสลับภาษาแบบ Toggle -->
+            <div class="mb-3 text-end">
+                <button type="button" class="btn btn-outline-secondary" onclick="switchLanguage()">THAI / ENG</button>
+            </div>
+            <h2 class="mb-4 text-center" id="title">แจ้งปัญหา</h2>
+            
+            <div class="mb-3">
+                <label for="name" class="form-label" id="nameLabel">ชื่อ-สกุล</label>
+                <input type="text" class="form-control" id="name" placeholder="กรอกชื่อของคุณ">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label" id="emailLabel">อีเมล</label>
+                <input type="email" class="form-control" id="email" placeholder="กรอกอีเมลของคุณ">
+            </div>
+
+            <div class="mb-3">
+                <label for="issueDescription" class="form-label" id="issueDescriptionLabel">รายละเอียดปัญหา</label>
+                <textarea class="form-control" id="issueDescription" rows="4" placeholder="กรอกรายละเอียดปัญหาที่คุณพบ"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="issueImage" class="form-label" id="issueImageLabel">แนบรูปภาพ (ถ้ามี)</label>
+                <input class="form-control" type="file" id="issueImage" accept="image/*" onchange="previewImage()">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" id="identityLabel">คุณต้องการระบุตัวตนหรือไม่?</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="identityOption" id="identified" value="identified" checked>
+                    <label class="form-check-label" for="identified" id="identifiedLabel">ระบุตัวตน</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="identityOption" id="anonymous" value="anonymous">
+                    <label class="form-check-label" for="anonymous" id="anonymousLabel">ไม่ระบุตัวตน</label>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="submitButton" onclick="submitForm()">ส่งปัญหา</button>
+        </form>
+
+        <div id="submittedInfo" class="mt-5" style="display: none;">
+            <h4 id="submittedInfoHeader">ข้อมูลที่ส่ง:</h4>
+            <p id="submittedName"></p>
+            <p id="submittedEmail"></p>
+            <p id="submittedIssue"></p>
+            <img id="submittedImage" src="" alt="รูปภาพที่อัปโหลด" style="max-width: 100%; display: none;">
+        </div>
+    </div>
+</body>
+</html>
