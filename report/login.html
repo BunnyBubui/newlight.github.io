@@ -144,6 +144,12 @@
     }
 
     /* โมดอล */
+    @keyframes modal-key{
+      0% {transform: scale(0%);}
+      80% {transform: scale(105%);}
+      100% {transform: scale(100%);}
+    }
+
     .modal {
       display: none; 
       position: fixed;
@@ -154,6 +160,7 @@
       background-color: rgba(0, 0, 0, 0.7);
       justify-content: center;
       align-items: center;
+      animation: modal-key 0.5s;
     }
 
     .modal-content {
