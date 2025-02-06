@@ -108,10 +108,17 @@
       padding: 40px;
     }
 
+    @keyframes scale-img{
+      0% {transform: scale(0);}
+      80% {transform: scale(105%);}
+      100% {transform: scale(100%);}
+    }
+
     .image-section img {
       height: 200px;
       width: auto;
       object-fit: contain;
+      animation: scale-img 0.5s;
     }
 
     .register-text {
