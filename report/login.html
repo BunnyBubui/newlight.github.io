@@ -136,12 +136,82 @@
       transform: translateY(-50%);
       cursor: pointer;
       color: #aaa;
-      z-index: 10; 
+      z-index: 10; /* ทำให้ไอคอนอยู่ด้านหน้าของช่องกรอก */
     }
 
     .form-group input {
-      padding-right: 40px;
+      padding-right: 40px; /* เพิ่มพื้นที่ด้านขวาให้ช่องกรอกข้อมูล */
     }
+
+    /* โมดอล */
+    .modal {
+      display: none; 
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .modal-button {
+      background-color: #e74c3c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .modal-button:hover {
+      background-color: #c0392b;
+    }
+
+    @media (max-width: 490px) {
+      .login-container {
+        flex-direction: column; /* เปลี่ยนเป็นคอลัมน์เพื่อให้รูปแสดงก่อนฟอร์ม */
+        max-width: 100%; /* ให้การ์ดไม่เกินความกว้างของหน้าจอ */
+      }
+
+      .form-section, .image-section {
+        padding: 20px; /* ลดระยะห่างภายใน */
+        width: 100%; /* ให้ความกว้างเต็ม */
+      }
+
+      .image-section {
+        order: -1; /* สลับลำดับให้รูปแสดงก่อนฟอร์ม */
+      }
+
+      .image-section img {
+        height: 150px; /* ปรับขนาดของรูปให้เล็กลง */
+      }
+
+      .form-section h2 {
+        font-size: 18px; /* ปรับขนาดฟอนต์ให้เล็กลง */
+      }
+
+      .form-control {
+        font-size: 14px; /* ลดขนาดฟอนต์ในช่องกรอกข้อมูล */
+        padding: 8px; /* ลดระยะห่างภายในช่องกรอกข้อมูล */
+      }
+
+      .btn-login {
+        font-size: 14px; /* ปรับขนาดฟอนต์ของปุ่มให้เล็กลง */
+      }
+    }
+
   </style>
 </head>
 
@@ -163,47 +233,40 @@
       </form>
     </div>
     <div class="image-section">
-      <img src="https://img2.pic.in.th/pic/Screenshot_2025-02-06_113604-removebg-preview.png?fbclid=IwY2xjawIRJD9leHRuA2FlbQIxMAABHaKva4mcpf8hMufPZmGbQ8-93AY1uBFE1qCn_CoGjzhD9BIUsBAo6XzmDQ_aem_ndyuSN0NpGJHyN_GUahNqA"
-        alt="Login Illustration">
+      <img src="https://img2.pic.in.th/pic/Screenshot_2025-02-06_113604-removebg-preview.png?fbclid=IwY2xjawIRJD9leHRuA2FlbQIxMAABHaKva4mcpf8hMufPZmGbQ8-93AY1uBFE1qCn_CoGjzhD9BIUsBAo6XzmDQ_aem_ndyuSN0NpGJHyN_GUahNqA" alt="Login Illustration">
     </div>
   </div>
 
-
+  <!-- โมดอลแจ้งเตือน -->
   <div class="modal" id="successModal">
     <div class="modal-content">
-      <h2>เข้าสู่ระบบเรียบร้อยแล้ว</h2>
-      <button class="modal-button" onclick="window.location.href = 'https://bunnybubui.github.io/newlight.github.io/report/index.html'">OK</button>
+      <h3>เข้าสู่ระบบเรียบร้อยแล้ว!</h3>
+      <button class="modal-button" onclick="goToNextPage()">ตกลง</button>
     </div>
   </div>
 
   <script>
-
+    // ฟังก์ชันเปิด/ปิดรหัสผ่าน
     const togglePassword = document.getElementById("togglePassword");
     const passwordField = document.getElementById("password");
-  
+
     togglePassword.addEventListener("click", function () {
       const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
       passwordField.setAttribute("type", type);
-      this.textContent = type === "password" ? "👁️" : "🙈";
+      this.textContent = type === "password" ? "👁️" : "🙈"; // เปลี่ยนไอคอนระหว่างเปิด/ปิด
     });
 
-
+    // ฟังก์ชันจัดการเมื่อกดปุ่มล็อกอิน
     function handleLogin(event) {
-      event.preventDefault(); 
+      event.preventDefault();  // หยุดการรีเฟรชหน้าเมื่อฟอร์มถูกส่ง
 
-      const password = document.getElementById("password").value;
-
-
-      const passwordPattern = /^[A-Za-z0-9]+$/;
-
-      if (!passwordPattern.test(password)) {
-        alert("รหัสผ่านต้องเป็นตัวเลขและภาษาอังกฤษเท่านั้น");
-        return false;
-      }
-
-
+      // แสดงโมดอลแจ้งเตือน
       document.getElementById("successModal").style.display = "flex";
-      return false; 
+    }
+
+    // ฟังก์ชันเมื่อกดปุ่มในโมดอล
+    function goToNextPage() {
+      window.location.href = "https://bunnybubui.github.io/newlight.github.io/report/index.html"; // เปลี่ยนไปที่หน้าอื่นที่ต้องการ
     }
   </script>
 </body>
