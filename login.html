@@ -10,137 +10,137 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  background-color: #c0392b;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: 'Poppins', sans-serif;
-}
+    body {
+      background-color: #c0392b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+    }
 
-.login-container {
-  background: rgb(228, 228, 228);
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  max-width: 800px;
-  width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
+    .login-container {
+      background: rgb(228, 228, 228);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
 
-.form-section {
-  padding: 40px;
-  flex: 1;
-}
+    .form-section {
+      padding: 40px;
+      flex: 1;
+    }
 
-.form-section h2 {
-  margin-bottom: 20px;
-  font-weight: bold;
-  color: #e74c3c;
-}
+    .form-section h2 {
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #e74c3c;
+    }
 
-.form-group {
-  position: relative;
-  margin-bottom: 20px;
-}
+    .form-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
 
-.form-group input:hover {
-  border: solid #e74c3c 1px;
-}
+    .form-group input:hover {
+      border: solid #e74c3c 1px;
+    }
 
-.form-control {
-  border-radius: 10px;
-  padding: 10px;
-  width: 100%;
-  font-size: 16px;
-}
+    .form-control {
+      border-radius: 10px;
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+    }
 
-.form-label {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  background-color: white;
-  border-radius: 5px;
-  padding: 0 5px;
-  color: #aaa;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
+    .form-label {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      background-color: white;
+      border-radius: 5px;
+      padding: 0 5px;
+      color: #aaa;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
 
-.form-control:focus + .form-label,
-.form-control:not(:placeholder-shown) + .form-label {
-  top: -3px;
-  font-size: 14px;
-  color: #e74c3c;
-}
+    .form-control:focus + .form-label,
+    .form-control:not(:placeholder-shown) + .form-label {
+      top: -3px;
+      font-size: 14px;
+      color: #e74c3c;
+    }
 
-.btn-login {
-  width: 100%;
-  border-radius: 10px;
-  background: #e74c3c;
-  color: white;
-  font-weight: bold;
-  transition: 0.5s;
-}
+    .btn-login {
+      width: 100%;
+      border-radius: 10px;
+      background: #e74c3c;
+      color: white;
+      font-weight: bold;
+      transition: 0.5s;
+    }
 
-.btn-login:hover {
-  border: solid #b23c2b 1px;
-  color: #b23c2b;
-  transition: 0.5s;
-}
+    .btn-login:hover {
+      border: solid #b23c2b 1px;
+      color: #b23c2b;
+      transition: 0.5s;
+    }
 
-.image-section {
-  flex: 1;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-}
+    .image-section {
+      flex: 1;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
 
-.image-section img {
-  height: 200px;
-  width: auto;
-  object-fit: contain;
-}
+    .image-section img {
+      height: 200px;
+      width: auto;
+      object-fit: contain;
+    }
 
-.register-text {
-  margin-top: 10px;
-  text-align: center;
-}
+    .register-text {
+      margin-top: 10px;
+      text-align: center;
+    }
 
-.register-text a {
-  color: #e74c3c;
-  font-weight: bold;
-  text-decoration: none;
-}
+    .register-text a {
+      color: #e74c3c;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
-.register-text a:hover {
-  text-decoration: underline;
-}
+    .register-text a:hover {
+      text-decoration: underline;
+    }
 
-.toggle-password {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #aaa;
-  z-index: 10; /* ทำให้ไอคอนอยู่ด้านหน้าของช่องกรอก */
-}
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #aaa;
+      z-index: 10; /* ทำให้ไอคอนอยู่ด้านหน้าของช่องกรอก */
+    }
 
-.form-group input {
-  padding-right: 40px; /* เพิ่มพื้นที่ด้านขวาให้ช่องกรอกข้อมูล */
-}
+    .form-group input {
+      padding-right: 40px; /* เพิ่มพื้นที่ด้านขวาให้ช่องกรอกข้อมูล */
+    }
   </style>
 </head>
 
@@ -169,15 +169,7 @@ body {
   </div>
 
   <script src="js/login.js">
-    // ฟังก์ชันเปิด/ปิดรหัสผ่าน
-const togglePassword = document.getElementById("togglePassword");
-const passwordField = document.getElementById("password");
 
-togglePassword.addEventListener("click", function () {
-  const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
-  passwordField.setAttribute("type", type);
-  this.textContent = type === "password" ? "👁️" : "🙈"; // เปลี่ยนไอคอนระหว่างเปิด/ปิด
-});
   </script>
 </body>
 
