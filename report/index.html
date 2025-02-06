@@ -121,6 +121,47 @@
             border: solid #e74c3c 1px;
         }
 
+        @keyframes modal-key{
+            0% {opacity: 0%;}
+            100% {opacity: 100%;}
+          }
+      
+          .modal {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            animation: modal-key 0.5s ;
+          }
+      
+          .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+          }
+      
+          .modal-button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+          }
+      
+          .modal-button:hover {
+            background-color: #c0392b;
+          }
+
     </style>
     <script>
         let currentLang = 'th';
@@ -201,9 +242,12 @@
 
         function submitForm() {
             // Show alert when the form is submitted
-            alert("ส่งเรียบร้อยแล้ว");
+            document.getElementById("successModal").style.display = "flex";
             return false;  // Prevent the form from actually submitting
         }
+        function closeModal() {
+            document.getElementById("successModal").style.display = "none";
+          }
 
         // เรียกฟังก์ชัน updateContent() ครั้งแรกเมื่อหน้าเว็บโหลด
         window.addEventListener('DOMContentLoaded', updateContent);
@@ -251,5 +295,11 @@
             <button type="submit" class="btn btn-primary" id="submitButton">ส่งปัญหา</button>
         </form>
     </div>
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+          <h3>ทุกปัญหาของคุณ ถูกส่งมายังพวกเราแล้ว!</h3>
+          <button class="modal-button" onclick="closeModal()">ตกลง</button>
+        </div>
+      </div>
 </body>
 </html>
