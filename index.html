@@ -93,13 +93,18 @@
             border: none;
             font-weight: bold;
             border-radius: 10px;
-            transition: 0.3s;
+            transition: background-color 0.3s, color 0.3s; /* แค่เปลี่ยนสี ไม่ให้ border หรือ box-shadow เปลี่ยน */
+            padding: 12px 24px; /* กำหนดขนาดปุ่มให้คงที่ */
         }
 
         .btn-primary:hover {
-            background-color: #b23c2b; /* ปรับสีเมื่อ hover */
-            color: white;
+            color: #e74c3c;
+            background-color: white;
+            transition: background-color 0.3s, color 0.3s; /* แค่เปลี่ยนสี ไม่ให้ border หรือ box-shadow เปลี่ยน */
+            border: solid #e74c3c 1px;
         }
+
+
 
         .btn-outline-secondary {
             color: #e74c3c;
@@ -116,7 +121,6 @@
         }
 
     </style>
-    
     <script>
         let currentLang = 'th';
 
@@ -192,6 +196,12 @@
                     }
                 }
             }
+        }
+
+        function submitForm() {
+            // Show alert when the form is submitted
+            alert("ส่งเรียบร้อยแล้ว");
+            return false;  // Prevent the form from actually submitting
         }
 
         // เรียกฟังก์ชัน updateContent() ครั้งแรกเมื่อหน้าเว็บโหลด
