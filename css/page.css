@@ -161,8 +161,21 @@
             flex-wrap: wrap;
             transition: background-color 0.5s, color 0.5s;
           }
+          .modal-button:hover {
+            background-color: #51dc8d;
+            color: black;
+          }
           
           .modal-button-cancle{
+            display: flex;
+            text-align: center;
+            width: 50%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 20px;
+            flex-wrap: wrap;
             background-color: white;
             border: 1px solid #e74c3c;
             color: rgb(0, 0, 0);
@@ -175,10 +188,7 @@
             color: rgb(255, 255, 255);
           }
       
-          .modal-button:hover {
-            background-color: #51dc8d;
-            color: black;
-          }
+          
 
           ::-webkit-scrollbar{
             width: 1vw;
