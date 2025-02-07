@@ -32,6 +32,10 @@
             background-color: #e74c3c;
         }
 
+        .container{
+            animation: scale-container 0.5s;
+        }
+
         #issueForm {
             padding: 30px;
             border-radius: 20px;
@@ -173,4 +177,10 @@
 
           ::-webkit-scrollbar-thumb:hover{
             background-color: #ffb7af;
+          }
+
+          @keyframes scale-container{
+            0% {transform: scale(0);}
+            80% {transform: scale(105%);}
+            100% {transform: scale(100%);}
           }
