@@ -79,11 +79,11 @@ let currentLang = 'th';
             document.getElementById("successModal").style.display = "flex";
             return false;  // Prevent the form from actually submitting
         }
-        function closeModal(n) {
+        function closeModal(n = false) {
             document.getElementById("successModal").style.display = "none";
             if (n === true){
-            window.location.href = "https://bunnybubui.github.io/newlight.github.io/report/menu.html";
-        }
+                window.location.href = "https://bunnybubui.github.io/newlight.github.io/report/menu.html";
+            }
           }
 
         // เรียกฟังก์ชัน updateContent() ครั้งแรกเมื่อหน้าเว็บโหลด
