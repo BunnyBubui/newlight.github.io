@@ -302,7 +302,7 @@
       const minLength = 5;
       let value = input.value.replace(/\D/, "");
       if (value.length < minLength) {
-          input.setCustomValidity(`กรุณากรอกตัวเลขอย่างน้อย ${minLength} ตัว`);
+          input.setCustomValidity(`กรุณากรอกรหัสผ่านอย่างน้อย ${minLength} ตัว`);
       } else {
           input.setCustomValidity("");
       }
