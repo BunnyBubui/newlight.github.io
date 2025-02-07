@@ -225,6 +225,9 @@
         font-size: 14px; /* ปรับขนาดฟอนต์ของปุ่มให้เล็กลง */
       }
     }
+    ::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;}
 
   </style>
 </head>
@@ -281,8 +284,8 @@
     // ฟังก์ชันเมื่อกดปุ่มในโมดอล
     function goToNextPage() {
       window.location.href = "https://bunnybubui.github.io/newlight.github.io/needed/index.html"; // เปลี่ยนไปที่หน้าอื่นที่ต้องการ
-
-      function validateLength(input) {
+    }
+    function validateLength(input) {
         const minLength = 8;
         const maxLength = 10;
         let value = input.value.replace(/\D/, "");
@@ -304,7 +307,7 @@
           input.setCustomValidity("");
       }
   }
-    }
+    
   </script>
 </body>
 
