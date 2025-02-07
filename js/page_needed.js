@@ -81,7 +81,9 @@ let currentLang = 'th';
         }
         function closeModal() {
             document.getElementById("successModal").style.display = "none";
-            window.location.href = "https://bunnybubui.github.io/newlight.github.io/needed/menu.html";
+            if (n === true){
+                window.location.href = "https://bunnybubui.github.io/newlight.github.io/needed/menu.html";
+            }
           }
 
         // เรียกฟังก์ชัน updateContent() ครั้งแรกเมื่อหน้าเว็บโหลด
