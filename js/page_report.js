@@ -1,39 +1,118 @@
-let isEnglish = false; // ค่าเริ่มต้นเป็นภาษาไทย
+let currentLang = 'th'; // Default language is Thai
 
 function switchLanguage() {
-    isEnglish = !isEnglish; // สลับสถานะระหว่างไทย-อังกฤษ
+    currentLang = currentLang === 'th' ? 'en' : 'th'; // Toggle between Thai and English
+    updateContent();
 
-    // เปลี่ยนข้อความของ label และ placeholder
-    document.getElementById("title").innerText = isEnglish ? "Report an Issue" : "แจ้งปัญหา";
-    document.getElementById("nameLabel").innerText = isEnglish ? "Full Name" : "ชื่อ-สกุล";
-    document.getElementById("name").placeholder = isEnglish ? "Enter your name" : "กรอกชื่อของคุณ";
-    document.getElementById("emailLabel").innerText = isEnglish ? "Email" : "อีเมล";
-    document.getElementById("email").placeholder = isEnglish ? "Enter your email" : "กรอกอีเมลของคุณ";
-    document.getElementById("issueDescriptionLabel").innerText = isEnglish ? "Issue Details" : "รายละเอียดปัญหา";
-    document.getElementById("issueDescription").placeholder = isEnglish ? "Enter the issue details" : "กรอกรายละเอียดปัญหาที่คุณพบ";
-    document.getElementById("categoryLabel").innerText = isEnglish ? "Issue Category" : "หมวดหมู่ปัญหา";
-
-    // เปลี่ยนข้อความใน dropdown หมวดหมู่ปัญหา
-    let categoryDropdown = document.getElementById("issueCategory");
-    categoryDropdown.innerHTML = isEnglish
-        ? `<option value="" disabled selected>-- Select a category --</option>
-           <option value="safety">Safety</option>
-           <option value="building">Building Facilities</option>
-           <option value="equipment">Equipment</option>
-           <option value="staff">Staff Complaint</option>
-           <option value="other">Other</option>`
-        : `<option value="" disabled selected>-- เลือกหมวดหมู่ --</option>
-           <option value="safety">ความปลอดภัย</option>
-           <option value="building">อาคารสถานที่</option>
-           <option value="equipment">ครุภัณฑ์</option>
-           <option value="staff">ร้องเรียนเจ้าหน้าที่</option>
-           <option value="other">อื่นๆ</option>`;
-
-    // เปลี่ยนข้อความในตัวเลือกระบุตัวตน
-    document.getElementById("identityLabel").innerText = isEnglish ? "Do you want to reveal your identity?" : "คุณต้องการระบุตัวตนหรือไม่?";
-    document.getElementById("identifiedLabel").innerText = isEnglish ? "Identify" : "ระบุตัวตน";
-    document.getElementById("anonymousLabel").innerText = isEnglish ? "Anonymous" : "ไม่ระบุตัวตน";
-
-    // ปุ่มส่ง
-    document.getElementById("submitButton").innerText = isEnglish ? "Submit Issue" : "ส่งปัญหา";
+    if (currentLang === 'en') {
+        document.body.classList.add('lang-en');
+    } else {
+        document.body.classList.remove('lang-en');
+    }
 }
+
+function updateContent() {
+    const elements = {
+        title: document.getElementById("title"),
+        nameLabel: document.getElementById("nameLabel"),
+        emailLabel: document.getElementById("emailLabel"),
+        issueDescriptionLabel: document.getElementById("issueDescriptionLabel"),
+        issueImageLabel: document.getElementById("issueImageLabel"),
+        identityLabel: document.getElementById("identityLabel"),
+        identifiedLabel: document.getElementById("identifiedLabel"),
+        anonymousLabel: document.getElementById("anonymousLabel"),
+        submitButton: document.getElementById("submitButton"),
+        submittedInfoHeader: document.getElementById("submittedInfoHeader"),
+        name: document.getElementById("name"),
+        email: document.getElementById("email"),
+        issueDescription: document.getElementById("issueDescription"),
+        categoryLabel: document.getElementById("categoryLabel"),
+        issueCategory: document.getElementById("issueCategory")
+    };
+
+    const translations = {
+        th: {
+            title: "New Light Party - แจ้งปัญหา",
+            nameLabel: "ชื่อ-สกุล",
+            emailLabel: "อีเมล",
+            issueDescriptionLabel: "รายละเอียดปัญหา",
+            issueImageLabel: "แนบรูปภาพ (ถ้ามี)",
+            identityLabel: "คุณต้องการระบุตัวตนหรือไม่?",
+            identifiedLabel: "ระบุตัวตน",
+            anonymousLabel: "ไม่ระบุตัวตน",
+            submitButton: "ส่งปัญหา",
+            submittedInfoHeader: "ข้อมูลที่ส่ง:",
+            name: "กรอกชื่อของคุณ",
+            email: "กรอกอีเมลของคุณ",
+            issueDescription: "กรอกรายละเอียดปัญหาที่คุณพบ",
+            categoryLabel: "หมวดหมู่ปัญหา",
+            categoryOptions: [
+                { value: "", text: "-- เลือกหมวดหมู่ --" },
+                { value: "safety", text: "ความปลอดภัย" },
+                { value: "building", text: "อาคารสถานที่" },
+                { value: "equipment", text: "ครุภัณฑ์" },
+                { value: "staff", text: "ร้องเรียนเจ้าหน้าที่" },
+                { value: "other", text: "อื่นๆ" }
+            ]
+        },
+        en: {
+            title: "New Light Party - Report an Issue",
+            nameLabel: "Full Name",
+            emailLabel: "Email",
+            issueDescriptionLabel: "Issue Description",
+            issueImageLabel: "Attach Image (if any)",
+            identityLabel: "Do you want to identify yourself?",
+            identifiedLabel: "Identify",
+            anonymousLabel: "Anonymous",
+            submitButton: "Submit Issue",
+            submittedInfoHeader: "Submitted Information:",
+            name: "Enter your name",
+            email: "Enter your email",
+            issueDescription: "Enter the issue description",
+            categoryLabel: "Issue Category",
+            categoryOptions: [
+                { value: "", text: "-- Select a category --" },
+                { value: "safety", text: "Safety" },
+                { value: "building", text: "Building Facilities" },
+                { value: "equipment", text: "Equipment" },
+                { value: "staff", text: "Staff Complaint" },
+                { value: "other", text: "Other" }
+            ]
+        }
+    };
+
+    // Update the text content and placeholders
+    for (const key in elements) {
+        const element = elements[key];
+        if (element) {
+            if (key === 'name' || key === 'email' || key === 'issueDescription') {
+                element.placeholder = translations[currentLang][key];
+            } else if (key === 'issueCategory') {
+                // Update dropdown options
+                let optionsHTML = "";
+                translations[currentLang].categoryOptions.forEach(option => {
+                    optionsHTML += `<option value="${option.value}">${option.text}</option>`;
+                });
+                element.innerHTML = optionsHTML;
+            } else {
+                element.innerText = translations[currentLang][key];
+            }
+        }
+    }
+}
+
+function submitForm() {
+    // Show alert when the form is submitted
+    document.getElementById("successModal").style.display = "flex";
+    return false;  // Prevent the form from actually submitting
+}
+
+function closeModal(n = false) {
+    document.getElementById("successModal").style.display = "none";
+    if (n === true) {
+        window.location.href = "https://bunnybubui.github.io/newlight.github.io/report/menu.html";
+    }
+}
+
+// Call updateContent() on page load
+window.addEventListener('DOMContentLoaded', updateContent);
