@@ -25,7 +25,8 @@ function updateContent() {
         submittedInfoHeader: document.getElementById("submittedInfoHeader"),
         name: document.getElementById("name"),
         email: document.getElementById("email"),
-        issueDescription: document.getElementById("issueDescription")
+        issueDescription: document.getElementById("issueDescription"),
+        issueCategory: document.getElementById("issueCategory")  // เพิ่ม element สำหรับหมวดหมู่ปัญหา
     };
 
     const translations = {
@@ -42,7 +43,8 @@ function updateContent() {
             submittedInfoHeader: "ข้อมูลที่ส่ง:",
             name: "กรอกชื่อของคุณ",
             email: "กรอกอีเมลของคุณ",
-            issueDescription: "กรอกรายละเอียดปัญหาที่คุณพบ"
+            issueDescription: "กรอกรายละเอียดปัญหาที่คุณพบ",
+            issueCategoryOptions: ["ความปลอดภัย", "อาคารสถานที่", "ครุภัณฑ์", "ร้องเรียนเจ้าหน้าที่", "อื่นๆ"] // ตัวเลือกหมวดหมู่
         },
         en: {
             title: "New Light Party - Report an Issue",
@@ -57,7 +59,8 @@ function updateContent() {
             submittedInfoHeader: "Submitted Information:",
             name: "Enter your name",
             email: "Enter your email",
-            issueDescription: "Enter the issue description"
+            issueDescription: "Enter the issue description",
+            issueCategoryOptions: ["Safety", "Building Facilities", "Equipment", "Staff Complaint", "Other"] // ตัวเลือกหมวดหมู่
         }
     };
 
@@ -67,39 +70,16 @@ function updateContent() {
         if (element) {
             if (key === 'name' || key === 'email' || key === 'issueDescription') {
                 element.placeholder = translation;
+            } else if (key === 'issueCategory') {
+                // แปลตัวเลือกหมวดหมู่
+                for (let i = 0; i < element.options.length; i++) {
+                    element.options[i].text = translation[i]; // เปลี่ยนข้อความในตัวเลือก
+                }
             } else {
                 element.innerText = translation;
             }
         }
     }
-
-    // อัปเดตตัวเลือกหมวดหมู่ปัญหา
-    const issueCategory = document.getElementById("issueCategory");
-    const categoryTranslations = {
-        th: {
-            default: "-- เลือกหมวดหมู่ --",
-            safety: "ความปลอดภัย",
-            building: "อาคารสถานที่",
-            equipment: "ครุภัณฑ์",
-            staff: "ร้องเรียนเจ้าหน้าที่",
-            other: "อื่นๆ"
-        },
-        en: {
-            default: "-- Select a category --",
-            safety: "Safety",
-            building: "Buildings & Facilities",
-            equipment: "Equipment",
-            staff: "Staff Complaint",
-            other: "Other"
-        }
-    };
-
-    issueCategory.options[0].text = categoryTranslations[currentLang].default;
-    issueCategory.options[1].text = categoryTranslations[currentLang].safety;
-    issueCategory.options[2].text = categoryTranslations[currentLang].building;
-    issueCategory.options[3].text = categoryTranslations[currentLang].equipment;
-    issueCategory.options[4].text = categoryTranslations[currentLang].staff;
-    issueCategory.options[5].text = categoryTranslations[currentLang].other;
 }
 
 function submitForm() {
