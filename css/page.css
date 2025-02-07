@@ -149,7 +149,7 @@
           .modal-button {
             display: flex;
             text-align: center;
-            background-color: #18da45;
+            background-color: #21ca6a;
             color: white;
             padding: 10px 20px;
             width: 50%;
@@ -159,6 +159,7 @@
             font-weight: bold;
             margin: 20px;
             flex-wrap: wrap;
+            transition: background-color 0.5s, color 0.5s;
           }
           
           .modal-button-cancle{
@@ -175,7 +176,8 @@
           }
       
           .modal-button:hover {
-            background-color: #c0392b;
+            background-color: #51dc8d;
+            color: black;
           }
 
           ::-webkit-scrollbar{
