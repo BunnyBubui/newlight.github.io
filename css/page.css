@@ -148,6 +148,7 @@
           }
           .modal-button {
             display: flex;
+            text-align: center;
             background-color: #e74c3c;
             color: white;
             padding: 10px 20px;
