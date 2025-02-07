@@ -235,11 +235,11 @@
       <h2>Login</h2>
       <form id="loginForm" onsubmit="return handleLogin(event)">
         <div class="form-group">
-          <input type="number" class="form-control" id="username" placeholder=" " required minlength="8">
+          <input type="number" class="form-control" id="username" placeholder=" " required oninput="validateLength(this)" />
           <label for="username" class="form-label">Student ID</label>
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="password" placeholder=" " required minlength="5">
+          <input type="password" class="form-control" id="password" placeholder=" " required oninput="passwordLength(this)" />
           <label for="password" class="form-label">Password</label>
           <span class="toggle-password" id="togglePassword">&#128065;</span>
         </div>
@@ -281,6 +281,29 @@
     // ฟังก์ชันเมื่อกดปุ่มในโมดอล
     function goToNextPage() {
       window.location.href = "https://bunnybubui.github.io/newlight.github.io/needed/index.html"; // เปลี่ยนไปที่หน้าอื่นที่ต้องการ
+
+      function validateLength(input) {
+        const minLength = 8;
+        const maxLength = 10;
+        let value = input.value.replace(/\D/, "");
+        if (value.length < minLength) {
+            input.setCustomValidity(`กรุณากรอกตัวเลขอย่างน้อย ${minLength} ตัว`);
+        } else if (value.length > maxLength) {
+            input.setCustomValidity(`กรุณากรอกตัวเลขไม่เกิน ${maxLength} ตัว`);
+        } else {
+            input.setCustomValidity("");
+        }
+    }
+  
+    function passwordLength(input) {
+      const minLength = 5;
+      let value = input.value.replace(/\D/, "");
+      if (value.length < minLength) {
+          input.setCustomValidity(`กรุณากรอกตัวเลขอย่างน้อย ${minLength} ตัว`);
+      } else {
+          input.setCustomValidity("");
+      }
+  }
     }
   </script>
 </body>
