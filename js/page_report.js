@@ -73,7 +73,7 @@ function updateContent() {
             } else if (key === 'issueCategory') {
                 // แปลตัวเลือกหมวดหมู่
                 for (let i = 0; i < element.options.length; i++) {
-                    element.options[i].text = translation[i]; // เปลี่ยนข้อความในตัวเลือก
+                    element.options[i].textContent = translation[i]; // เปลี่ยนข้อความในตัวเลือก
                 }
             } else {
                 element.innerText = translation;
