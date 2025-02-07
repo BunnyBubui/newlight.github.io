@@ -79,7 +79,7 @@ let currentLang = 'th';
             document.getElementById("successModal").style.display = "flex";
             return false;  // Prevent the form from actually submitting
         }
-        function closeModal() {
+        function closeModal(n) {
             document.getElementById("successModal").style.display = "none";
             if (n === true){
                 window.location.href = "https://bunnybubui.github.io/newlight.github.io/needed/menu.html";
