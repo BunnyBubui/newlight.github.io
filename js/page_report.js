@@ -26,9 +26,10 @@ let currentLang = 'th';
                 name: document.getElementById("name"),
                 email: document.getElementById("email"),
                 issueDescription: document.getElementById("issueDescription"),
-                issue: document.getElementById("issueTxt")
+                issueCategoryLabel: document.getElementById("issueTxt"), // เปลี่ยน ID ให้ตรงกับ <label>
+                issueCategory: document.getElementById("issueCategory") // ดึง <select> มาด้วย
             };
-
+        
             const translations = {
                 th: {
                     title: "New Light Party - แจ้งปัญหา",
@@ -44,7 +45,15 @@ let currentLang = 'th';
                     name: "กรอกชื่อของคุณ",
                     email: "กรอกอีเมลของคุณ",
                     issueDescription: "กรอกรายละเอียดปัญหาที่คุณพบ",
-                    issue: "หมวดหมู่ปัญหา"
+                    issueCategoryLabel: "หมวดหมู่ปัญหา",
+                    issueCategoryOptions: [
+                        "-- เลือกหมวดหมู่ --",
+                        "ความปลอดภัย",
+                        "อาคารสถานที่",
+                        "ครุภัณฑ์",
+                        "ร้องเรียนเจ้าหน้าที่",
+                        "อื่นๆ"
+                    ]
                 },
                 en: {
                     title: "New Light Party - Report an Issue",
@@ -60,23 +69,40 @@ let currentLang = 'th';
                     name: "Enter your name",
                     email: "Enter your email",
                     issueDescription: "Enter the issue description",
-                    issue: "Categories of Issues"
+                    issueCategoryLabel: "Category of Issues",
+                    issueCategoryOptions: [
+                        "-- Select a category --",
+                        "Safety",
+                        "Building",
+                        "Equipment",
+                        "Staff Complaint",
+                        "Other"
+                    ]
                 }
             };
-
+        
             for (const key in elements) {
                 const element = elements[key];
                 const translation = translations[currentLang][key];
                 if (element) {
                     if (key === 'name' || key === 'email' || key === 'issueDescription') {
                         element.placeholder = translation;
+                    } else if (key === 'issueCategory') {
+                        // อัปเดตตัวเลือกของ <select>
+                        element.innerHTML = `
+                            <option value="" disabled selected>${translations[currentLang].issueCategoryOptions[0]}</option>
+                            <option value="safety">${translations[currentLang].issueCategoryOptions[1]}</option>
+                            <option value="building">${translations[currentLang].issueCategoryOptions[2]}</option>
+                            <option value="equipment">${translations[currentLang].issueCategoryOptions[3]}</option>
+                            <option value="staff">${translations[currentLang].issueCategoryOptions[4]}</option>
+                            <option value="other">${translations[currentLang].issueCategoryOptions[5]}</option>
+                        `;
                     } else {
                         element.innerText = translation;
                     }
                 }
             }
         }
-
         function submitForm() {
             // Show alert when the form is submitted
             document.getElementById("successModal").style.display = "flex";
