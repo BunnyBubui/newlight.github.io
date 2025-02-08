@@ -177,10 +177,6 @@
         
         
 
-        @keyframes move-down{
-            0% {transform: translateY(0%); opacity: 100%;}
-            100%{transform: translateY(100%); opacity: 0;}
-        }
         .track-options {
             display: flex;
             flex-direction: column;
@@ -249,8 +245,7 @@
             <img src="https://bunnybubui.github.io/newlight.github.io/pictures/logo_1.png">
         </div>
 
-        <!-- ปุ่มเปิด Modal -->
-        <button onclick = "closeContainer()" class="btn btn-primary">สถานะการติดตาม</button>
+        <a href = "https://bunnybubui.github.io/newlight.github.io/result.html" class="btn btn-primary">สถานะการติดตาม</a>
         <a href ="https://bunnybubui.github.io/newlight.github.io/report/login.html" class="btn btn-outline-light">แจ้งปัญหา</a> 
         <a href ="https://bunnybubui.github.io/newlight.github.io/needed/login.html" class="btn btn-outline-light">ความต้องการของนักศึกษา</a>
     </div>
@@ -328,16 +323,7 @@
                 }
             }
         });
-        function closeContainer() {
-            const container = document.querySelector('.container');
-            container.style.animation = "move-down 1s forwards";
-        
-            // ซ่อน container เมื่อแอนิเมชันจบ
-            container.addEventListener("animationend", () => {
-                container.style.display = "none";
-                window.location.href = "https://bunnybubui.github.io/newlight.github.io/result.html";
-            }, { once: false }); // ให้ทำงานครั้งเดียว
-        }
+
     </script>
 </body>
 </html>
