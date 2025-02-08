@@ -88,3 +88,7 @@ let currentLang = 'th';
 
         // เรียกฟังก์ชัน updateContent() ครั้งแรกเมื่อหน้าเว็บโหลด
         window.addEventListener('DOMContentLoaded', updateContent);
+
+        window.onload = function() {
+            document.getElementById('loader').style.display = 'none';
+        };
