@@ -179,6 +179,17 @@
                 transform: translateY(0);
             }
         }
+
+        .btn-size{
+            max-width: 500px;
+            width: 25%;
+            animation: sizeBTN 1s;
+        }
+
+        @keyframes sizeBTN{
+            0%{width: 100%;}
+            100%{width: 25%;}
+        }
         
     </style>
 </head>
@@ -197,7 +208,7 @@
         <div class="track-options">
             <a href = "https://bunnybubui.github.io/newlight.github.io/report/track_status.html" class="btn btn-primary">สถานะการติดตามปัญหา</a>
             <a href = "#" class="btn btn-outline-light">สถานะการติดตามความต้องการของนักศึกษา</a>
-            <a href = "https://bunnybubui.github.io/newlight.github.io/home.html" class="btn btn-outline-light">ย้อนกลับ</a>
+            <a href = "https://bunnybubui.github.io/newlight.github.io/home.html" class="btn btn-outline-light btn-size" >ย้อนกลับ</a>
         </div>
         </div>
     </div>
