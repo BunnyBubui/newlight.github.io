@@ -55,7 +55,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             width: 90%;
             max-width: 500px;
-            animation: fadeIn 0.5s ease-in-out, move-down 2s;
+            animation: fadeIn 1s;
         }
 
         h1 {
@@ -135,11 +135,11 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: scale(0.9);
+                transform: translateY(-100%);
             }
             to {
                 opacity: 1;
-                transform: scale(1);
+                transform: translateY(0);
             }
         }
 
@@ -162,7 +162,7 @@
         }
 
         .container-right {
-            display: none; /* Initially hidden */
+            display: none;
             position: absolute;
             right: 20px;
             top: 50%;
@@ -175,9 +175,11 @@
             animation: fadeIn 0.5s ease-in-out, move-right 2s;
         }
         
-        @keyframes move-right{
-            0% {transform: translateX(100%);}
-            100%{transform: translateX(0);}
+        
+
+        @keyframes move-down{
+            0% {transform: translateY(0%); opacity: 100%;}
+            100%{transform: translateY(100%); opacity: 0;}
         }
         .track-options {
             display: flex;
@@ -218,6 +220,20 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        ::-webkit-scrollbar{
+            width: 1vw;
+            background-color: #e74c3c;
+          }
+
+          ::-webkit-scrollbar-thumb{
+            width: 1vw;
+            background-color: #fc8375;
+            border-radius: 1vw;
+          }
+
+          ::-webkit-scrollbar-thumb:hover{
+            background-color: #ffb7af;
+          }
     </style>
 </head>
 <body>
@@ -234,7 +250,7 @@
         </div>
 
         <!-- ปุ่มเปิด Modal -->
-        <a href = "https://bunnybubui.github.io/newlight.github.io/result.html" class="btn btn-primary">สถานะการติดตาม</a>
+        <button onclick = "closeContainer()" class="btn btn-primary">สถานะการติดตาม</button>
         <a href ="https://bunnybubui.github.io/newlight.github.io/report/login.html" class="btn btn-outline-light">แจ้งปัญหา</a> 
         <a href ="https://bunnybubui.github.io/newlight.github.io/needed/login.html" class="btn btn-outline-light">ความต้องการของนักศึกษา</a>
     </div>
@@ -312,6 +328,16 @@
                 }
             }
         });
+        function closeContainer() {
+            const container = document.querySelector('.container');
+            container.style.animation = "move-down 1s forwards";
+        
+            // ซ่อน container เมื่อแอนิเมชันจบ
+            container.addEventListener("animationend", () => {
+                container.style.display = "none";
+                window.location.href = "https://bunnybubui.github.io/newlight.github.io/result.html";
+            }, { once: false }); // ให้ทำงานครั้งเดียว
+        }
     </script>
 </body>
 </html>
