@@ -25,7 +25,8 @@ let currentLang = 'th';
                 submittedInfoHeader: document.getElementById("submittedInfoHeader"),
                 name: document.getElementById("name"),
                 email: document.getElementById("email"),
-                issueDescription: document.getElementById("issueDescription")
+                issueDescription: document.getElementById("issueDescription"),
+                issue: document.getElementById("issueTxt")
             };
 
             const translations = {
@@ -42,7 +43,8 @@ let currentLang = 'th';
                     submittedInfoHeader: "ข้อมูลที่ส่ง:",
                     name: "กรอกชื่อของคุณ",
                     email: "กรอกอีเมลของคุณ",
-                    issueDescription: "กรอกรายละเอียดปัญหาที่คุณพบ"
+                    issueDescription: "กรอกรายละเอียดปัญหาที่คุณพบ",
+                    issue: "หมวดหมู่ปัญหา"
                 },
                 en: {
                     title: "New Light Party - Report an Issue",
@@ -57,7 +59,8 @@ let currentLang = 'th';
                     submittedInfoHeader: "Submitted Information:",
                     name: "Enter your name",
                     email: "Enter your email",
-                    issueDescription: "Enter the issue description"
+                    issueDescription: "Enter the issue description",
+                    issue: "Categories of Issues"
                 }
             };
 

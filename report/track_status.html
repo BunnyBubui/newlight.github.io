@@ -310,6 +310,11 @@
                 0%{width: 0%;}
                 100%{width: 100%;}
             }
+
+            @keyframes step-slide {
+                0%{width: 0%;}
+                100%{width: 100%;}
+            }
         .step::after {
             content: '';
             position: absolute;
@@ -319,7 +324,7 @@
             height: 4px;
             background-color: #3d3d3d;
             z-index: -1;
-            animation: timeline-slide 5s;
+            animation: step-slide 5s;
         }
 
         .stepp::after {
@@ -331,7 +336,7 @@
             height: 4px;
             background-color: #3d3d3d;
             z-index: -1;
-            animation: timeline-slide 5s;
+            animation: step-slide 5s;
         }
 
         .step:last-child::after {
