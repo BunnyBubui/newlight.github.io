@@ -82,7 +82,7 @@ let currentLang = 'th';
         function closeModal(n = false) {
             document.getElementById("successModal").style.display = "none";
             if (n === true){
-                window.location.href = "https://bunnybubui.github.io/newlight.github.io/report/menu.html";
+                window.location.href = "https://bunnybubui.github.io/newlight.github.io/menu.html";
             }
           }
 
