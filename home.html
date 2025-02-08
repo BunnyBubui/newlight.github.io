@@ -145,6 +145,7 @@
             .container-right {
                 width: 200px;
             }
+
         }
 
         .container-right {
@@ -179,6 +180,7 @@
         }
 
         .modal {
+            color: rgb(0, 0, 0);
             display: none; 
             position: fixed;
             top: 0;
@@ -204,11 +206,17 @@
             justify-content: center;
             align-content: center;
           }
+
+          @keyframes modal-key{
+            0% {opacity: 0%;}
+            100% {opacity: 100%;}
+          }
+
           .modal-button {
             display: flex;
             text-align: center;
             background-color: #21ca6a;
-            color: white;
+            color: rgb(0, 0, 0);
             padding: 10px 20px;
             width: 50%;
             border: none;
@@ -218,7 +226,9 @@
             margin: 20px;
             flex-wrap: wrap;
             transition: background-color 0.5s, color 0.5s;
+            animation: modal-key 0.5s;
           }
+
           .modal-button:hover {
             background-color: #51dc8d;
             color: black;
@@ -292,21 +302,12 @@
         </div>
 
         <!-- ปุ่มเปิด Modal -->
-        <button class="btn btn-primary" onclick="openModal()">สถานะการติดตาม</button>
-        <button class="btn btn-outline-light" onclick="location.href='about.html'">แจ้งปัญหา</button>
-        <button class="btn btn-outline-light" onclick="location.href='about.html'">ความต้องการของนักศึกษา</button>
+        <a href = "https://bunnybubui.github.io/newlight.github.io/result.html" class="btn btn-primary">สถานะการติดตาม</a>
+        <a href ="#" class="btn btn-outline-light">แจ้งปัญหา</a> 
+        <a href ="#" class="btn btn-outline-light">ความต้องการของนักศึกษา</a>
     </div>
 
-    <!-- Modal สำหรับยืนยัน -->
-    <div class="modal" id="track-status">
-        <div class="modal-content">
-            <h3>ยืนยันการส่งแบบฟอร์ม</h3>
-            <div class="just-center">
-                <button class="modal-button-cancle" onclick="closeModal(false)">ยกเลิก</button>
-                <button class="modal-button" onclick="closeModal(true)">ตกลง</button>
-            </div>
-        </div>
-    </div>
+
 </body>
 
 
@@ -315,7 +316,7 @@
     window.onload = function() {
         document.getElementById('loader').style.display = 'none';
     };
-    
+
     function toggleTrackOptions() {
         var trackContainer = document.getElementById("track-container");
         if (trackContainer.style.display === "none" || trackContainer.style.display === "") {
@@ -325,17 +326,6 @@
         }
     }
     
-    // ฟังก์ชันเปิด Modal
-function openModal() {
-    var modal = document.getElementById("track-status");
-    modal.style.display = "flex";  // แสดง Modal
-}
-
-// ฟังก์ชันปิด Modal
-function closeModal(confirm) {
-    var modal = document.getElementById("track-status");
-    modal.style.display = "none";  // ปิด Modal
-}
 
     
 
