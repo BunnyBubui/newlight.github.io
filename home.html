@@ -28,15 +28,21 @@
             padding: 20px;
         }
 
+        @keyframes move-down{
+            0% {transform: translateY(-100%);}
+            100%{transform: translateY(0);}
+        }
+
         .container {
-            background: rgba(255, 255, 255, 0.15);
+            color: black;
+            background-color: #ffffff;
             backdrop-filter: blur(10px);
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             width: 90%;
             max-width: 500px;
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.5s ease-in-out, move-down 2s;
         }
 
         h1 {
@@ -54,24 +60,29 @@
         }
 
         .btn-primary {
-            background-color: white;
-            color: #e74c3c;
-            border: 2px solid white;
+            background-color: #e74c3c;
+            color: #ffffff;
+            border: 1px solid #e74c3c;
+            transition: color 0.5s, background-color 0.5s;
         }
 
         .btn-primary:hover {
-            background-color: #e74c3c;
-            color: white;
+            background-color: #ed7769;
+            color: #ffffff;
+            border: 1px solid #e74c3c;
         }
 
         .btn-outline-light {
             border-color: white;
-            color: white;
+            color: #e74c3c;
+            transition: color 0.5s, background-color 0.5s;
+            border: 1px solid #e74c3c;
         }
 
         .btn-outline-light:hover {
-            background-color: white;
-            color: #e74c3c;
+            background-color: #e74c3c;
+            color: white;
+            border-color: #e74c3c;
         }
 
         .user-profile img {
@@ -79,13 +90,33 @@
             width: 50px;
             height: 50px;
             object-fit: cover;
+            
         }
+
+        @keyframes glow{
+            0% {filter:drop-shadow(0px 0px 0px rgb(255, 206, 174)); transform: scale(100%);}
+            50% {filter:drop-shadow(0px 0px 10px rgb(255, 192, 149)); transform: scale(105%);}
+            100% {filter:drop-shadow(0px 0px 0px rgb(255, 206, 174)); transform: scale(100%);}
+        }  
 
         .profile-container {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             margin-top: 10px;
+            animation: glow infinite 5s;
+        }
+
+        .profile-container img {
+            width: 250px;
+            height: 250px;
+            animation: scale-des 1s;
+        }
+
+        @keyframes scale-des{
+            0% {transform: scale(50%);}
+            100% {transform: scale(100%);}
         }
 
         @keyframes fadeIn {
@@ -98,16 +129,178 @@
                 transform: scale(1);
             }
         }
+
+        @media (max-width: 500px) {
+            .profile-container img {
+                width: 150px;
+                height: 150px;
+                animation: scale 1s;
+            }
+
+            @keyframes scale{
+                0% {transform: scale(150%);}
+                100% {transform: scale(100%);}   
+            }
+
+            .container-right {
+                width: 200px;
+            }
+        }
+
+        .container-right {
+            display: none; /* Initially hidden */
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            animation: fadeIn 0.5s ease-in-out, move-right 2s;
+        }
+        
+        @keyframes move-right{
+            0% {transform: translateX(100%);}
+            100%{transform: translateX(0);}
+        }
+        .track-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .status-display {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .modal {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            animation: modal-key 0.5s ;
+          }
+      
+          .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+          }
+          .just-center{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+          }
+          .modal-button {
+            display: flex;
+            text-align: center;
+            background-color: #21ca6a;
+            color: white;
+            padding: 10px 20px;
+            width: 50%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 20px;
+            flex-wrap: wrap;
+            transition: background-color 0.5s, color 0.5s;
+          }
+          .modal-button:hover {
+            background-color: #51dc8d;
+            color: black;
+          }
+          
+          .modal-button-cancle{
+            display: flex;
+            text-align: center;
+            width: 50%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 20px;
+            flex-wrap: wrap;
+            background-color: white;
+            border: 1px solid #e74c3c;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            transition: color 0.5s, background-color 0.5s;
+          }
+      
+          .modal-button-cancle:hover{
+            background-color: #ff0000;
+            color: rgb(255, 255, 255);
+          }
+        
+        
     </style>
 </head>
 <body>
     <div class="container">
         <h1>ยินดีต้อนรับสู่ New Light Party</h1>
         <p>เว็บไซต์สำหรับแจ้งปัญหาและข้อมูลสำคัญ</p>
-        
-        <a href="report.html" class="btn btn-primary">แจ้งปัญหา</a>
-        <a href="about.html" class="btn btn-outline-light">เกี่ยวกับเรา</a>
+
+        <div class="profile-container">
+            <img src="https://bunnybubui.github.io/newlight.github.io/pictures/logo_1.png">
+        </div>
+
+        <!-- ปุ่มเปิด Modal -->
+        <button class="btn btn-primary" onclick="openModal()">สถานะการติดตาม</button>
+        <button class="btn btn-outline-light" onclick="location.href='about.html'">แจ้งปัญหา</button>
+        <button class="btn btn-outline-light" onclick="location.href='about.html'">ความต้องการของนักศึกษา</button>
+    </div>
+
+    <!-- Modal สำหรับยืนยัน -->
+    <div class="modal" id="track-status">
+        <div class="modal-content">
+            <h3>ยืนยันการส่งแบบฟอร์ม</h3>
+            <div class="just-center">
+                <button class="modal-button-cancle" onclick="closeModal(false)">ยกเลิก</button>
+                <button class="modal-button" onclick="closeModal(true)">ตกลง</button>
+            </div>
         </div>
     </div>
 </body>
+
+
+
+<script>
+    function toggleTrackOptions() {
+        var trackContainer = document.getElementById("track-container");
+        if (trackContainer.style.display === "none" || trackContainer.style.display === "") {
+            trackContainer.style.display = "block";
+        } else {
+            trackContainer.style.display = "none";
+        }
+    }
+    
+    // ฟังก์ชันเปิด Modal
+function openModal() {
+    var modal = document.getElementById("track-status");
+    modal.style.display = "flex";  // แสดง Modal
+}
+
+// ฟังก์ชันปิด Modal
+function closeModal(confirm) {
+    var modal = document.getElementById("track-status");
+    modal.style.display = "none";  // ปิด Modal
+}
+
+    
+
+</script>
 </html>
